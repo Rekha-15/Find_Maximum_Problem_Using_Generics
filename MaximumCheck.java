@@ -1,64 +1,59 @@
 package com;
 
-/**
- * MaximumCheck is a class of public type
- */
-
-public class MaximumCheck {
+public class MaximumCheck<T extends Comparable<T>> {
+	
+	T x, y, z;
+	
+	public MaximumCheck(T x, T y, T z) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+	}
 	
 	/**
-	 * Calculating Maximum of 3 Integers, Floating point, Strings
-	 * return max value
-	 * @param elements
 	 * @param x
 	 * @param y
 	 * @param z
+	 * @return Maximum of 3 of any Type
+	 * determine the largest of three Comparable Objects
 	 */
 	
+	//determine the largest of three Comparable Objects
 	public static <T extends Comparable<T>> T checkMaximum(T x, T y, T z) {
 		T max = x;
 		if(y.compareTo(max) > 0) {
-			max = y; // y is maximum now
+			max = y; // y is largest thus for
 		}
 		if(z.compareTo(max) > 0) {
-			max = z; // z is maximum now
+			max = z; // z is largest now
 		}
-		return max; 
+		printMax(max);
+		return max; // returns maximum
+	}
+
+	public static String testMaximum(String x, String y, String z) {
+		String max = x;
+		if(y.compareTo(max) > 0) {
+			max = y; // y is the largest so far
+		}
+		if(z.compareTo(max) > 0) {
+			max = z; // z is the largest now
+		}
+		printMax( max);
+		return max; // returns the largest so for
 	}
 	
-	/**
-	 * @param <T>
-	 * @param elements
-	 * @return
-	 */
-	public static <T extends Comparable<T>> T checkMaximum_With_MoreThan_ThreeParameters(T... elements) {
-		T max = elements[0];
-		for(T maximumParametereter : elements) {
-			if(maximumParametereter.compareTo(max) > 0) {
-				max = maximumParametereter;
-			}
-		}
-		return max;
+	public static <T> void printMax(T max) {
+		System.out.println("Max of Three  is " + max);
 	}
-	
-	/**
-	 * main method
-	 * calling function checkMaximum
-	 */
 
 	public static void main(String[] args) {
-		Integer c = checkMaximum(10,23,15);
+		Integer n = checkMaximum(10,23,15);
 		Double d = checkMaximum(12.5, 13.4, 22.0);
-		String s = checkMaximum("Apple", "Peach", "Banana");
-		Integer c1 = checkMaximum_With_MoreThan_ThreeParameters(10,23,15,20,24);
-		Double d1 = checkMaximum_With_MoreThan_ThreeParameters(12.5, 13.4, 22.0,24.0,20.8);
-		String s1 = checkMaximum_With_MoreThan_ThreeParameters("Apple", "Peach", "Banana", "Mango", "Orange"); 
-		System.out.println("The maximum integer value in 10, 23, 15 is : " +c);
-		System.out.println("The maximum float value in 12.5, 13.4, 22.0 is : " +d);
-		System.out.println("The maximum float value in Apple ,Peach, Banana is: " +s);
-		System.out.println("The maximum integer value is : " +c1);
-		System.out.println("The maximum float value is : " +d1);
-		System.out.println("The maximum string value is : " +s1);
+		String a = "Apple", b = "peach", c = "Banana"; 
+		MaximumCheck.testMaximum(a, b, c);
+		printMax(n);
+		printMax(d);
 	}
 
 }
