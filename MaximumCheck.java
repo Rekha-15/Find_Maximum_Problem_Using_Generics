@@ -1,78 +1,64 @@
 package com;
 
 /**
- * MaximumCheck is an class of public type
- * @author rekha
- *
+ * MaximumCheck is a class of public type
  */
+
 public class MaximumCheck {
 	
 	/**
-	 * checkMaximum is a method to check the maximum value in integer.
-	 * calculating Maximum of Three Numbers using CompareTo method
-	 *returning int max value
+	 * Calculating Maximum of 3 Integers, Floating point, Strings
+	 * return max value
+	 * @param elements
+	 * @param x
+	 * @param y
+	 * @param z
 	 */
 	
-		public static int checkMaximum(Integer x, Integer y, Integer z) {
-			Integer max = x;
-			if(y.compareTo(max) > 0) {
-				max = y; // y is largest now
-			}
-			if(z.compareTo(max) > 0) {
-				max = z; // z is largest now
-			}
-			return max; // returns maximum number
+	public static <T extends Comparable<T>> T checkMaximum(T x, T y, T z) {
+		T max = x;
+		if(y.compareTo(max) > 0) {
+			max = y; // y is maximum now
 		}
-		
-		/**
-		 * checkMaximum is a method to check the maximum value in float.
-		 * calculating Maximum of Three Numbers using CompareTo method
-		 *returning float max value
-		 */
-		
-		public static Double checkMaximum(Double d, Double e, Double f) {
-			Double max = d;
-			if(e.compareTo(max) > 0) {
-				max = e; // e is largest now
-			}
-			if(f.compareTo(max) > 0) {
-				max = f; // f is largest
-			}
-			return max; // returns maximum number
+		if(z.compareTo(max) > 0) {
+			max = z; // z is maximum now
 		}
-		
-		/**
-		 * checkMaximum is a method to check the maximum in 3 strings.
-		 * calculating Maximum in 3 string using CompareTo method
-		 *returning max string value
-		 */
-		// Calculating maximum of 3 Strings
-		public static String checkMaximum(String s1, String s2, String s3) {
-			String max = s1;
-			if(s2.compareTo(max) > 0) {
-				max = s2; // s2 is Maximum now 
+		return max; 
+	}
+	
+	/**
+	 * @param <T>
+	 * @param elements
+	 * @return
+	 */
+	public static <T extends Comparable<T>> T checkMaximum_With_MoreThan_ThreeParameters(T... elements) {
+		T max = elements[0];
+		for(T maximumParametereter : elements) {
+			if(maximumParametereter.compareTo(max) > 0) {
+				max = maximumParametereter;
 			}
-			if(s3.compareTo(max) > 0) {
-				max = s3; // s3 is Maximum now
-			}
-			return max; // returns maximum value
 		}
-		
-		/**
-		 * main method
-		 *calling checkMaximum integer and float function
-		 *printing max int value
-		 *printing max float value
-		 */
-		
-		public static void main(String[] args) {
-			
-			int c = checkMaximum(10,23,15);
-			Double d = checkMaximum(12.5, 13.4, 22.0);
-			String s = checkMaximum("Apple", "Peach", "Banana");
-			System.out.println("The Maximum int value is : " +c);
-			System.out.println("The Maximum float value is : " +d);
-			System.out.println("The Maximum String value is : " +s);
-		}
+		return max;
+	}
+	
+	/**
+	 * main method
+	 * calling function checkMaximum
+	 */
+
+	public static void main(String[] args) {
+		Integer c = checkMaximum(10,23,15);
+		Double d = checkMaximum(12.5, 13.4, 22.0);
+		String s = checkMaximum("Apple", "Peach", "Banana");
+		Integer c1 = checkMaximum_With_MoreThan_ThreeParameters(10,23,15,20,24);
+		Double d1 = checkMaximum_With_MoreThan_ThreeParameters(12.5, 13.4, 22.0,24.0,20.8);
+		String s1 = checkMaximum_With_MoreThan_ThreeParameters("Apple", "Peach", "Banana", "Mango", "Orange"); 
+		System.out.println("The maximum integer value in 10, 23, 15 is : " +c);
+		System.out.println("The maximum float value in 12.5, 13.4, 22.0 is : " +d);
+		System.out.println("The maximum float value in Apple ,Peach, Banana is: " +s);
+		System.out.println("The maximum integer value is : " +c1);
+		System.out.println("The maximum float value is : " +d1);
+		System.out.println("The maximum string value is : " +s1);
+	}
 
 }
