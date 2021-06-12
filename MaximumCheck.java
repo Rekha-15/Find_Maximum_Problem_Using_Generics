@@ -42,6 +42,23 @@ public class MaximumCheck {
 		}
 		
 		/**
+		 * checkMaximum is a method to check the maximum in 3 strings.
+		 * calculating Maximum in 3 string using CompareTo method
+		 *returning max string value
+		 */
+		// Calculating maximum of 3 Strings
+		public static String checkMaximum(String s1, String s2, String s3) {
+			String max = s1;
+			if(s2.compareTo(max) > 0) {
+				max = s2; // s2 is Maximum now 
+			}
+			if(s3.compareTo(max) > 0) {
+				max = s3; // s3 is Maximum now
+			}
+			return max; // returns maximum value
+		}
+		
+		/**
 		 * main method
 		 *calling checkMaximum integer and float function
 		 *printing max int value
@@ -52,8 +69,10 @@ public class MaximumCheck {
 			
 			int c = checkMaximum(10,23,15);
 			Double d = checkMaximum(12.5, 13.4, 22.0);
+			String s = checkMaximum("Apple", "Peach", "Banana");
 			System.out.println("The Maximum int value is : " +c);
 			System.out.println("The Maximum float value is : " +d);
+			System.out.println("The Maximum String value is : " +s);
 		}
 
 }
